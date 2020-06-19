@@ -17,9 +17,6 @@
    - 'us-central1'
    - '--platform'
    - 'managed'
-   - '--member'
-   - 'allUsers'
-   - '--role'
-   - 'roles/run.invoker'
+   - '--allow-unauthenticated' 
  images:
  - 'gcr.io/$PROJECT_ID/document-reader-front:$COMMIT_SHA'
