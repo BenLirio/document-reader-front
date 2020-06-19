@@ -13,6 +13,8 @@ RUN npm run build
 
 FROM httpd
 
-EXPOSE 80
+COPY ./apache/httpd.conf /usr/local/apache2/conf/httpd.conf
+
+EXPOSE 8080
 
 COPY --from=builder /run/app/front/build/ /usr/local/apache2/htdocs/
