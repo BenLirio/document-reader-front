@@ -13,8 +13,6 @@ RUN npm run build
 
 FROM httpd
 
-ENV PORT=8080
-
 COPY ./apache/httpd.conf /usr/local/apache2/conf/httpd.conf
 
 EXPOSE 8080
