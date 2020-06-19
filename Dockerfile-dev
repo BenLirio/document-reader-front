@@ -1,0 +1,12 @@
+FROM node
+
+WORKDIR /run/app/front
+
+COPY package*.json ./
+
+RUN npm i
+
+COPY ./src ./src
+COPY ./public ./public
+
+ENTRYPOINT ["npm", "run", "start"]
