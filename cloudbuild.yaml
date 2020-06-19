@@ -16,6 +16,7 @@
    - '--region'
    - 'us-central1'
    - '--platform'
+   - '--allow-unauthenticated'
    - 'managed'
  images:
  - 'gcr.io/$PROJECT_ID/document-reader-front:$COMMIT_SHA'
