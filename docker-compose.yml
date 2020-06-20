@@ -5,9 +5,11 @@ services:
       context: .
       target: dev
     image: front
+    environment:
+      PORT: 8080
     volumes:
       - ./src:/run/app/front/src
       - ./public:/run/app/front/public
     ports:
-      - 3000:3000
+      - 8080:8080
     stdin_open: true
