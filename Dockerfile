@@ -11,7 +11,20 @@ COPY ./public ./public
 
 RUN npm run build
 
-FROM httpd
+FROM node AS dev
+
+WORKDIR /run/app/front
+
+COPY package*.json ./
+
+RUN npm i
+
+COPY ./src ./src
+COPY ./public ./public
+
+ENTRYPOINT ["npm", "run", "start"]
+
+FROM httpd AS prod
 
 COPY ./apache/httpd.conf /usr/local/apache2/conf/httpd.conf
 
