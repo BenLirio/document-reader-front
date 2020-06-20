@@ -24,10 +24,10 @@ COPY ./public ./public
 
 ENTRYPOINT ["npm", "run", "start"]
 
-FROM httpd AS prod
+FROM nginx:alpine AS nginx
 
-COPY ./apache/httpd.conf /usr/local/apache2/conf/httpd.conf
+COPY --from=builder /run/app/front/build/ /usr/share/nginx/html
 
-EXPOSE 8080
+ADD ./nginx/default.conf /etc/nginx/conf.d/default.template
 
-COPY --from=builder /run/app/front/build/ /usr/local/apache2/htdocs/
+CMD sh -c "envsubst \"`env | awk -F = '{printf \" \\\\$%s\", $1}'`\" < /etc/nginx/conf.d/default.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"

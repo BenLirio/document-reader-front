@@ -4,7 +4,7 @@ steps:
     args:
       - 'build'
       - '--target'
-      - 'prod'
+      - 'nginx'
       - '-t'
       - 'gcr.io/$PROJECT_ID/document-reader-front:$COMMIT_SHA'
       - '.'
